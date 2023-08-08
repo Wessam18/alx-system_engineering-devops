@@ -1,3 +1,2 @@
 #!/bin/bash
-user="linux user" | echo hello $user
-
+echo hello $user
