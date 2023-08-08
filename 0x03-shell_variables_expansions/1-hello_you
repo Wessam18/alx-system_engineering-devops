@@ -1,2 +1,2 @@
 #!/bin/bash
-echo "hello $user"
+export user="linux user" | echo "hello $user"
