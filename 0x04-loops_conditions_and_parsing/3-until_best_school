@@ -2,7 +2,7 @@
 #Bash script that displays Best School
 
 i=0
-while [[ $i -lt 10 ]]
+until [[ $i -eq 10 ]]
 do
     echo "Best School"
     i=$(( i + 1))
