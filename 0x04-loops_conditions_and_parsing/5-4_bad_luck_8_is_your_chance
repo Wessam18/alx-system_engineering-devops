@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 #Bash script that displays Best School
 
-i=0
+i=1
 while [[ $i -lt 10 ]]
 do
-    if [ $i = 3 ]; then
+    if [ $i = 4 ]; then
         echo "bad luck"
         i=$(( i + 1))
-    elif [ $i = 7 ]; then
+    elif [ $i = 8 ]; then
         echo "good luck "
         i=$(( i + 1))
     else
