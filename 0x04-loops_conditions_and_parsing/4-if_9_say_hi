@@ -7,9 +7,8 @@ do
     if [ $i = 8 ]; then
         echo "Best School"
         echo "Hi"
-        i=$(( i + 1))
     else
         echo "Best School"
-        i=$(( i + 1))
     fi
+    i=$(( i + 1))
 done
