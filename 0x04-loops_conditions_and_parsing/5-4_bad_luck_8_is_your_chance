@@ -6,12 +6,10 @@ while [[ $i -le 10 ]]
 do
     if [ $i = 4 ]; then
         echo "bad luck"
-        i=$(( i + 1))
     elif [ $i = 8 ]; then
         echo "good luck "
-        i=$(( i + 1))
     else
         echo "Best School"
-        i=$(( i + 1))
     fi
+    i=$(( i + 1))
 done
