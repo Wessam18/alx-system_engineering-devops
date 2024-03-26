@@ -28,4 +28,4 @@ if __name__ == "__main__":
         line = csv.writer(file, quoting=csv.QUOTE_ALL)
         for task in task_req:
             line.writerow([argv[1], user_req.get("username"),
-                        task.get('completed'), task.get('title')])
+                           task.get('completed'), task.get('title')])
