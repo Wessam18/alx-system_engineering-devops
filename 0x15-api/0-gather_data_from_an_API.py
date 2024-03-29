@@ -9,7 +9,7 @@ from sys import argv
 
 if __name__ == "__main__":
     req_user = requests.get(
-            "https://jsonplaceholder.typicode.com/users/{}".format(argv[1]))
+            f"https://jsonplaceholder.typicode.com/users/{argv[1]}")
     user_todo = requests.get(
             "https://jsonplaceholder.typicode.com/todos/")
 
@@ -23,10 +23,8 @@ if __name__ == "__main__":
             if x.get("completed"):
                 number_tasks += 1
 
-    employee = "Employee {} is done with tasks({}/{}):".format(
-                                                        employee_name,
-                                                        number_tasks,
-                                                        total_tasks)
+    employee = f"Employee {employee_name} is done with tasks({number_tasks}/{total_tasks}):"
+
     print(employee)
 
     for x in user_todo.json():
