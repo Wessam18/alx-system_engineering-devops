@@ -25,6 +25,7 @@ if __name__ == "__main__":
                     "completed": task.get("completed")
                 }
                 all_tasks.append(user_task)
+
         all_employee[user.get("id")] = all_tasks
 
     with open("todo_all_employees.json", "w") as jsonfile:
