@@ -23,8 +23,11 @@ if __name__ == "__main__":
             if x.get("completed"):
                 number_tasks += 1
 
-    employee = f"Employee {employee_name} is done with tasks({number_tasks}/{total_tasks}):"
-    
+    employee = "Employee {} is done with tasks({}/{}):".format(
+                                                        employee_name,
+                                                        number_tasks,
+                                                        total_tasks)
+
     print(employee)
 
     for x in user_todo.json():
