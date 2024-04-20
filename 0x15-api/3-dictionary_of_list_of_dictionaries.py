@@ -13,7 +13,7 @@ if __name__ == "__main__":
     tasks = requests.get(
             "https://jsonplaceholder.typicode.com/todos/").json()
 
-    #all_employee = {}
+    all_employee = {}
 
     for user in users:
         all_tasks = []
@@ -25,8 +25,7 @@ if __name__ == "__main__":
                     "completed": task.get("completed")
                 }
                 all_tasks.append(user_task)
-        #all_employee[user.get("id")] = all_tasks
-        export_data = {user.get("id"): all_tasks}
+        all_employee[user.get("id")] = all_tasks
 
     with open("todo_all_employees.json", "w") as jsonfile:
-        json.dump(export_data, jsonfile)
+        json.dump(all_employee, jsonfile)
