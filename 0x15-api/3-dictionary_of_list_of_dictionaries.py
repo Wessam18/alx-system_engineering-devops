@@ -1,34 +1,31 @@
 #!/usr/bin/python3
 """
-Using what you did in the task #0,
 extend your Python script to export data in the JSON format.
 """
 
 import json
 import requests
-from sys import argv
+import sys
 
 if __name__ == "__main__":
-    user = requests.get(
-            "https://jsonplaceholder.typicode.com/users/").json()
-    tasks = requests.get(
-            "https://jsonplaceholder.typicode.com/todos/").json()
+    url = "https://jsonplaceholder.typicode.com/"
+    users = requests.get(url + "users").json()
+    tasks = requests.get(url + "todos").json()
 
-    for use in user:
-        id = use.get("id")
-        username = use.get("username")
+    all_employee = {}
 
-    tasks_data = []
-
-    for task in tasks:
-        task_info = {
-            "task": task.get("title"),
-            "completed": task.get("completed"),
-            "username": use.get("username")
-        }
-        tasks_data.append(task_info)
-
-    export_data = {use.get("id"): tasks_data}
+    for user in users:
+        id = user.get("id")
+        username = user.get("username")
+        all_tasks = []
+        for task in tasks:
+            user_task = {}
+            if task.get("userId") == id:
+                user_task["username"] = username
+                user_task["task"] = task.get("title")
+                user_task["completed"] = task.get("completed")
+                all_tasks.append(user_task)
+        all_employee[id] = all_tasks
 
     with open("todo_all_employees.json", "w") as jsonfile:
-        json.dump(export_data, jsonfile)
+        json.dump(all_employee, jsonfile)
