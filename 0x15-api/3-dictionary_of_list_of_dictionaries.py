@@ -18,11 +18,12 @@ if __name__ == "__main__":
     for user in users:
         all_tasks = []
         for task in tasks:
-            user_task = {}
             if task.get("userId") == user.get("id"):
-                user_task["username"] = user.get("username")
-                user_task["task"] = task.get("title")
-                user_task["completed"] = task.get("completed")
+                user_task = {
+                    "username": user.get("username"),
+                    "task": task.get("title"),
+                    "completed": task.get("completed")
+                }
                 all_tasks.append(user_task)
         all_employee[user.get("id")] = all_tasks
 
