@@ -15,23 +15,23 @@ if __name__ == "__main__":
             "https://jsonplaceholder.typicode.com/todos/").json()
     
     # Initialize an empty list to hold tasks data
-tasks_data = []
+    tasks_data = []
 
-# Iterate through tasks and populate tasks_data list
-for task in tasks:
-    task_info = {
-        "task": task.get("title"),
-        "completed": task.get("completed"),
-        "username": user.get("username")
-    }
-    tasks_data.append(task_info)
+    # Iterate through tasks and populate tasks_data list
+    for task in tasks:
+        task_info = {
+            "task": task.get("title"),
+            "completed": task.get("completed"),
+            "username": user.get("username")
+        }
+        tasks_data.append(task_info)
 
-# Prepare data for JSON export
-export_data = {user.get("id"): tasks_data}
+    # Prepare data for JSON export
+    export_data = {user.get("id"): tasks_data}
 
-# Export data to JSON file
-with open(f"{argv[1]}.json", "w") as jsonfile:
-    json.dump(export_data, jsonfile)
+    # Export data to JSON file
+    with open(f"{argv[1]}.json", "w") as jsonfile:
+        json.dump(export_data, jsonfile)
 
 
     #with open(f"{argv[1]}.json", "w") as jsonfile:
