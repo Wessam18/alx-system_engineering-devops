@@ -31,4 +31,4 @@ if __name__ == "__main__":
     for x in user_todo.json():
         if x.get("userId") == int(argv[1]):
             if x.get("completed") is True:
-                print("\t {}".format(x.get("title")))
+                print(f"\t {x.get("title")}")
