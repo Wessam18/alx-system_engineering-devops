@@ -9,10 +9,11 @@ from sys import argv
 import requests
 
 if __name__ == "__main__":
+    params = {"userId": argv[1]}
     user = requests.get(
             f"https://jsonplaceholder.typicode.com/users/{argv[1]}").json()
     tasks = requests.get(
-            "https://jsonplaceholder.typicode.com/todos/").json()
+            "https://jsonplaceholder.typicode.com/todos/", params=params).json()
 
     with open(f"{argv[1]}.csv", "w", newline="") as f:
         x = csv.writer(f, quoting=csv.QUOTE_ALL)
