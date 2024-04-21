@@ -15,8 +15,7 @@ if __name__ == "__main__":
             "https://jsonplaceholder.typicode.com/todos/").json()
 
     with open(f"{argv[1]}.csv", "w", newline="") as f:
-        x = csv.writer(f)
-        x.writerow(["USER_ID", "USERNAME", "COMPLETED", "TASK_TITLE"])
+        x = csv.writer(f, quoting=csv.QUOTE_ALL)
         for task in tasks:
             x.writerow([(argv[1]), user.get("username"),
                         task.get("completed"), task.get("title")])
