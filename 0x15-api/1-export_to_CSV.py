@@ -1,31 +1,22 @@
 #!/usr/bin/python3
 """
-Using what you did in the task #0,
-extend your Python script to export data in the CSV format.
-
-Requirements:
-
-Records all tasks that are owned by this employee
-Format must be: "USER_ID","USERNAME","TASK_COMPLETED_STATUS","TASK_TITLE"
-File name must be: USER_ID.csv
+using this REST API, for a given employee ID,
+returns information about his/her TODO list progress.
 """
 
+import requests
 import csv
 from sys import argv
-import requests
-
 
 if __name__ == "__main__":
+    user = requests.get(
+            f"https://jsonplaceholder.typicode.com/users/{argv[1]}").json()
+    tasks = requests.get(
+            "https://jsonplaceholder.typicode.com/todos/").json()
 
-    params = {"userId": argv[1]}
-    user_req = requests.get(
-            "https://jsonplaceholder.typicode.com/users/{}".format(
-                                                            argv[1])).json()
-    task_req = requests.get(
-        "https://jsonplaceholder.typicode.com/todos/", params=params).json()
-
-    with open(f"{argv[1]}.csv", "w", newline="") as file:
-        line = csv.writer(file, quoting=csv.QUOTE_ALL)
-        for task in task_req:
-            line.writerow([argv[1], user_req.get("username"),
-                           task.get('completed'), task.get('title')])
+    with open (f"{argv[1]}.csv", "w", newline="") as f:
+        x = csv.writer(f)
+        x.writerow(["USER_ID", "USERNAME", "COMPLETED", "TASK_TITLE"])  # Write header row
+        for task in tasks:
+            x.writerow([(argv[1]), user.get("username"),
+                       task.get("completed"),task.get("title")])
