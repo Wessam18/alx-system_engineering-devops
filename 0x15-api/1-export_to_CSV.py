@@ -18,5 +18,4 @@ if __name__ == "__main__":
         x = csv.writer(f)
         x.writerow(["USER_ID", "USERNAME", "COMPLETED", "TASK_TITLE"])  # Write header row
         for task in tasks:
-            x.writerow([(argv[1]), user.get("username"),
-                       task.get("completed"),task.get("title")])
+            x.writerow([(argv[1]), user.get("username"), task.get("completed"),task.get("title")])
